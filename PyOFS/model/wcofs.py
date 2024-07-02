@@ -1166,7 +1166,7 @@ class WCOFSRange:
                     time_difference = input_time - day.replace(hour=3, minute=0, second=0)
                     time_delta = round(time_difference / timedelta(hours=1))
 
-                if time_delta in dataset.time_deltas:
+                for time_delta in dataset.time_deltas:
                     future = concurrency_pool.submit(dataset.data, variable, time_delta)
                     if time_delta < 0:
                         time_delta_string = f'n{abs(time_delta):03}'
